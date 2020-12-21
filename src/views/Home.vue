@@ -18,7 +18,6 @@
         </b-row>
       </b-card-group>
   </b-container>
-  {{ tenRecords }}
   </div>
 </template>
 
