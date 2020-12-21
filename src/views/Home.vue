@@ -2,9 +2,9 @@
   <div class="home">
     <b-button-group>
       <b-dropdown right text="Sort by">
-        <b-dropdown-item>Latest picture</b-dropdown-item>
+        <b-dropdown-item @click="order">Popular picture</b-dropdown-item>
         <b-dropdown-item>Oldest picture</b-dropdown-item>
-        <b-dropdown-item>Popular picture</b-dropdown-item>
+        <b-dropdown-item>picture</b-dropdown-item>
       </b-dropdown>
     </b-button-group>
     <b-container>
@@ -37,11 +37,21 @@ export default class Home extends Vue {
     mounted() {
         this.getTenRecords();
     }
+    print(){
+      console.log(this.tenRecords)
+    }
+
+    order() {
+      this.tenRecords.sort(function(a: any, b: any) {
+        return a.likes - b.likes;
+      }).reverse();
+    }
 
     async getTenRecords(){
         const response = await fetch(`https://api.unsplash.com/search/photos?&query=skyscraper&client_id=${ this.key }`);
         const json = await response.json();
         this.tenRecords = json.results;
+        console.log(this.tenRecords);
     }
 }
 </script>

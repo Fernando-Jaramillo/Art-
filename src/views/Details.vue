@@ -2,6 +2,7 @@
     <div>
           <b-col>
             <b-card
+            v-if="itemDetails.urls"
             title=" "
             :img-src="itemDetails.urls.small"
             img-alt="Image"
