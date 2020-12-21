@@ -27,30 +27,22 @@ import { Component, Vue } from 'vue-property-decorator';
 import Record from '../components/Record.vue';
 
 @Component({
-  components: {
-    Record
-  }
+    components:{
+        Record
+    }
 })
 export default class Home extends Vue {
-  key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
-  tenRecords: any = [];
+    key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
+    tenRecords = [];
 
-  mounted(){
-    this.getTenRecords;
-  }
-  async getTenRecords(){
-    const response = await fetch(`https://api.unsplash.com/search/photos?&query=skyscraper&client_id=${ this.key }`);
-    console.log(response);
-    const json = await response.json();
-    console.log(response);
-    this.tenRecords = json.results;
-    console.log(json.results);
-  }
+    mounted() {
+        this.getTenRecords();
+    }
 
-  // order(): void{
-  //   this.tenRecords.sort(function(a: any, b: any) {
-  //     return b.likes - a.likes;
-  //   });
-  // }
+    async getTenRecords(){
+        const response = await fetch(`https://api.unsplash.com/search/photos?&query=skyscraper&client_id=${ this.key }`);
+        const json = await response.json();
+        this.tenRecords = json.results;
+    }
 }
 </script>

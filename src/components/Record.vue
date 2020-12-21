@@ -11,7 +11,7 @@
             >
             <b-card-title> Title </b-card-title>
             <b-card-text> Year </b-card-text>
-            <b-button to="/details" @click="sendData" variant="primary">Go somewhere</b-button>
+            <b-button to="/details" @click="sendData" variant="primary">Details</b-button>
             </b-card>
         </b-col>
     </div>

@@ -2,6 +2,7 @@
     <div>
         <h1>this is the random page</h1>
         <RandomRecord
+        v-if='randomRecord.urls'
         :randomData="randomRecord"/>
         <button @click="getRandome">Another random</button>
     </div>
