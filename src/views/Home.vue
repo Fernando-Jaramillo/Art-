@@ -46,7 +46,11 @@ export default class Home extends Vue {
       this.tenRecords.sort(function(a: any, b: any) {
         return (a.width*a.height) - (b.width*b.height)
       });
-      console.log(this.tenRecords);
+    }
+    
+    orderBylargest(){
+      this.orderBySmallest();
+      this.tenRecords.reverse();
     }
     async getTenRecords(){
         const response = await fetch(`https://api.unsplash.com/search/photos?&query=skyscraper&client_id=${ this.key }`);
