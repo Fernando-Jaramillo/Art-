@@ -1,13 +1,18 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
+        <b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
             <b-navbar-brand to="/">NavBar</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-                <b-nav-item to="/category">Category</b-nav-item>
+
+                <b-nav-item-dropdown text="Category" right>
+                <b-dropdown-item>Horizontal Image</b-dropdown-item>
+                <b-dropdown-item>Vertical Image</b-dropdown-item>
+                </b-nav-item-dropdown>
+
                 <b-nav-item to="/random">Random</b-nav-item>
             </b-navbar-nav>
 
