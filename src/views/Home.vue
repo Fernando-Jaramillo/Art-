@@ -38,8 +38,9 @@ export default class Home extends Vue {
     key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
     tenRecords = [];
     records = [];
-    query = 'men'
+    query = 'art'
     mounted() {
+        this.getRecords ();
         this.upDateCategory();        
 
     }
