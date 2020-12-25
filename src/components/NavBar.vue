@@ -9,8 +9,8 @@
             <b-navbar-nav>
 
                 <b-nav-item-dropdown text="Category" right>
-                <b-dropdown-item>Horizontal Image</b-dropdown-item>
-                <b-dropdown-item>Vertical Image</b-dropdown-item>
+                <b-dropdown-item @click="sendCategory('art painting')">Painting</b-dropdown-item>
+                <b-dropdown-item @click="sendCategory('sculpture')">Sculpture</b-dropdown-item>
                 </b-nav-item-dropdown>
 
                 <b-nav-item to="/random">Random</b-nav-item>
@@ -46,9 +46,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { bus } from '../main';
 
 @Component
 export default class NavBar extends Vue{
-    
+    sendCategory(catg: string){
+        bus.$emit("passCatg", catg);
+        console.log(catg + " orks in nav");
+    }
 }
 </script>

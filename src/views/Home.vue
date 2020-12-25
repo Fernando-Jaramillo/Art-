@@ -2,6 +2,8 @@
   <div class="home">
     <b-container>
       <b-button-group class="butt">
+              {{ query }}
+
         <b-dropdown right text="Sort by">
           <b-dropdown-item @click="orderByPopular">Popular picture</b-dropdown-item>
           <b-dropdown-item @click="orderBylargest">big to samll picture</b-dropdown-item>
@@ -25,6 +27,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Record from '../components/Record.vue';
+import { bus } from '../main';
 
 @Component({
     components:{
@@ -35,11 +38,21 @@ export default class Home extends Vue {
     key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
     tenRecords = [];
     records = [];
+    query = 'men'
     mounted() {
-        this.getRecords()
+        this.upDateCategory();        
+
     }
+    upDateCategory(){
+      bus.$on('passCatg', (catg: string) => {
+        this.query = catg;
+        console.log(catg + "works in home")
+        this.getRecords ();
+      })
+    }
+
     async getRecords(){
-        const response = await fetch(`https://api.unsplash.com/search/photos?&query=skyscraper&client_id=${ this.key }&per_page=35`);
+        const response = await fetch(`https://api.unsplash.com/search/photos?&query=${ this.query }&client_id=${ this.key }`);
         const json = await response.json();
         this.records = json.results;
         this.tenRecords = this.records.slice(0, 10);

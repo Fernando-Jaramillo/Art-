@@ -33,7 +33,7 @@ export default class Details extends Vue{
      getData(){
           //the function of looking for by ID of the API does not work. This is an alternative
          bus.$on('passData', (id: any) => {
-          fetch(`https://api.unsplash.com/search/photos/?query=skyscraper&client_id=${ this.key }&per_page=35`)
+          fetch(`https://api.unsplash.com/search/photos?&query=${ this.query }&client_id=${ this.key }`)
             .then((res) => {
                 return res.json();
             })
