@@ -25,14 +25,8 @@ import { bus } from '../main';
 export default class Record extends Vue {
     @Prop() private pic!: any ;
     
-    picId = '';
-
-    created(){
-        this.picId = this.pic.id; 
-    }
-
     sendData(){
-        bus.$emit('passData', this.picId);
+        bus.$emit('passData', this.pic.id);
     }
 }
 </script>

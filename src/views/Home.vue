@@ -38,14 +38,16 @@ export default class Home extends Vue {
     key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
     tenRecords = [];
     records = [];
-    query = 'art'
+    query = 'art';
+    created(){
+        this.upDateCategory();  
+    }
     mounted() {
         this.getRecords ();
-        this.upDateCategory();        
 
     }
     upDateCategory(){
-      bus.$on('passCatg', (catg: string) => {
+      bus.$on('passCatgToHome', (catg: string) => {
         this.query = catg;
         console.log(catg + "works in home")
         this.getRecords ();

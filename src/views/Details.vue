@@ -25,11 +25,20 @@ import { bus } from '../main';
 export default class Details extends Vue{
     key = "6phQ10lhL66iIFs4PyrwHR4PSl725CuHON0BFPpQ1g0";
     itemDetails = {};
+    query = "art";
 
     mounted(){
       this.getData();
+      this.getQuery();
     }
-
+    getQuery(){
+        bus.$on('passCatgToDetls', (catg: string) => {
+            this.query = catg;
+            this.getData();
+            console.log(catg + ' works in Details')
+            console.log(this.query)
+        })
+    }
      getData(){
           //the function of looking for by ID of the API does not work. This is an alternative
          bus.$on('passData', (id: any) => {
@@ -38,10 +47,11 @@ export default class Details extends Vue{
                 return res.json();
             })
             .then((ans) =>{
-                const item = ans.results.find((item: any) => item.id == id)
+                const item = ans.results.find((item: any) => item.id == id);
                 this.itemDetails = item;
             })
         })
     }
+    
 }
 </script>
